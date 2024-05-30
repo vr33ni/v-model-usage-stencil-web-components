@@ -1,7 +1,7 @@
-# Vue 3 + Vite
+# Vue 3 + Vite example app consuming a custom web component from an external library to demonstrate v-model usage
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+We have two v-model directives bound to the same data property. Vue.js cannot detect property addition or deletion, so when I added a new property to the object after it has been created, Vue was not able to make that new property reactive.
 
-## Recommended IDE Setup
+By using a getter, we're ensuring that Vue.js can track the dependencies of the computed property and update the DOM whenever the data changes. A getter function will be reactive and will re-evaluate its return value whenever a reactive property it depends on changes.
 
-- [VS Code](https://code.visualstudio.com/) + [Vue - Official](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (previously Volar) and disable Vetur
+In this case, the getter is returning the value of a data property, and we're using v-model with that getter, so that Vue.js will be able to track when the data property changes and update the DOM accordingly.
